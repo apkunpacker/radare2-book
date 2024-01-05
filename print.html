@@ -2371,21 +2371,48 @@ the <code>true</code>.</p>
 <li><code>$</code> - move to the end of the line</li>
 <li><code>h</code> - move one character backward</li>
 <li><code>l</code> - move one character forward</li>
+<li><code>b</code> - move cursor to the beginning of the current word, of if between word boundaries, to the beginning of the previous word.</li>
+<li><code>B</code> - same as <code>b</code>, but only counting white-space as word boundary</li>
+<li><code>e</code> - move cursor the end of the current word, or if between boundaries, to the end of the next word</li>
+<li><code>E</code> - same as <code>e</code>, but only counting white-space as word boundary</li>
+<li><code>w</code> - move cursor to the beginning of the next word</li>
+<li><code>W</code> - same as <code>w</code>, but only counting white-space as word boundary</li>
+<li><code>f&lt;char&gt;</code> - move cursor forward to the first <code>&lt;char&gt;</code> found. For example <code>fj</code> will move the cursor to the first <code>j</code> character found (if it found one)</li>
+<li><code>F&lt;char&gt;</code> - same as <code>f&lt;char&gt;</code>, but search backwards</li>
+<li><code>t&lt;char&gt;</code> - same as <code>f&lt;char&gt;</code> but stop before <code>&lt;char&gt;</code>. For example <code>tj</code> will move the cursor forward to the character just before <code>j</code></li>
+<li><code>T&lt;char&gt;</code> - same as <code>t&lt;char&gt;</code>, but search backwards</li>
 </ul>
 <h2><a class="header" href="#deleting-and-yanking" id="deleting-and-yanking">Deleting and Yanking</a></h2>
 <ul>
 <li><code>x</code> - cuts the character</li>
-<li><code>dw</code> - delete the current word</li>
-<li><code>diw</code> - deletes the current word.</li>
+<li><code>dw</code> - delete the current word from the current position</li>
+<li><code>diw</code> - delete inside the current word</li>
 <li><code>db</code> - delete the previous word</li>
-<li><code>D</code> - delete the whole line</li>
+<li><code>D</code> - delete from the current cursor position to the end of line</li>
+<li><code>C</code> - same as <code>D</code>, but enter insert mode after</li>
+<li><code>dd</code> - delete the whole line (from any position)</li>
+<li><code>cc</code> - same as <code>dd</code>, but enter insert mode after</li>
 <li><code>dh</code> - delete a character to the left</li>
 <li><code>dl</code> - delete a character to the right</li>
-<li><code>d$</code> - kill the text from point to the end of the line.</li>
-<li><code>d^</code> - kill backward from the cursor to the beginning of the current line.</li>
+<li><code>d$</code> - same as <code>D</code></li>
+<li><code>d^</code> - delete from the current cursor position to the beginning of line</li>
 <li><code>de</code> - kill from point to the end of the current word, or if between words, to the end of the next word. Word boundaries are the same as forward-word.</li>
+<li><code>df&lt;char&gt;</code> - delete from current position to the position of the first <code>&lt;char&gt;</code> encountered</li>
+<li><code>dF&lt;char&gt;</code> - same as <code>df&lt;char&gt;</code>, but delete backwards</li>
+<li><code>dt&lt;char&gt;</code> - delete from current position to the position of the character right before the first <code>&lt;char&gt;</code> encountered</li>
+<li><code>dT&lt;char&gt;</code> - same as <code>dt&lt;char&gt;</code>, but delete backwards</li>
+<li><code>di&quot;</code> - delete everything between two <code>&quot;</code> characters</li>
+<li><code>di'</code> - delete everything between two <code>'</code> characters</li>
+<li><code>di(</code> - delete everything between <code>(</code> and <code>)</code> characters</li>
+<li><code>di[</code> - delete everything between <code>[</code> and <code>]</code> characters</li>
+<li><code>di{</code> - delete everything between <code>{</code> and <code>}</code> characters</li>
+<li><code>di&lt;</code> - delete everything between <code>&lt;</code> and <code>&gt;</code> characters</li>
 <li><code>p</code> - yank the top of the kill ring into the buffer at point.</li>
-<li><code>c</code> - acts similar to d based commands, but goes into insert mode in the end by prefixing the commands with numbers, the command is performed multiple times.</li>
+<li><code>c</code> - all <code>d</code> commands have their <code>c</code> counterpart which enters insert mode after deleting</li>
+</ul>
+<h2><a class="header" href="#other" id="other">Other</a></h2>
+<ul>
+<li><code>~</code> - swap the case of the current character and move one character forward</li>
 </ul>
 <p>If you are finding it hard to keep track of which mode you are in, just set <code>scr.prompt.mode=true</code> to update the color of the prompt based on the vi-mode.</p>
 <h1><a class="header" href="#visual-mode" id="visual-mode">Visual Mode</a></h1>
