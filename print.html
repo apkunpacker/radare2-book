@@ -161,7 +161,7 @@
 <li><a href="gemini://radare.org/book">Read it on Gemini</a> - md2gmi</li>
 </ul>
 <h2><a class="header" href="#history" id="history">History</a></h2>
-<p>In 2006, Sergi Àlvarez (aka pancake) was working as a forensic analyst. Since he wasn't allowed to use the company software for his personal needs, he decided to write a small tool-a hexadecimal editor-with very basic characteristics:</p>
+<p>In 2006, Sergi Àlvarez (aka pancake) is the author of radare and radare2, the project started when he was working as a forensic analyst. Since he wasn't allowed to use the company software for his personal needs, he decided to write a small tool-a hexadecimal editor-with very basic characteristics:</p>
 <ul>
 <li>be extremely portable (unix friendly, command line, c, small)</li>
 <li>open disk devices, this is using 64bit offsets</li>
@@ -1040,23 +1040,27 @@ It is quite simple to add new architectures for disassembling and analyzing code
 <p>Use <code>r2 -H</code> to list all the environment variables that matter to know where it will
 be looking for files. Those paths depend on the way (and operating system) you have
 built r2 for.</p>
-<pre><code>R2_PREFIX=/usr
-MAGICPATH=/usr/share/radare2/2.8.0-git/magic
-PREFIX=/usr
-INCDIR=/usr/include/libr
-LIBDIR=/usr/lib64
-LIBEXT=so
-RCONFIGHOME=/home/user/.config/radare2
-RDATAHOME=/home/user/.local/share/radare2
-RCACHEHOME=/home/user/.cache/radare2
-LIBR_PLUGINS=/usr/lib/radare2/2.8.0-git
-USER_PLUGINS=/home/user/.local/share/radare2/plugins
-USER_ZIGNS=/home/user/.local/share/radare2/zigns
+<pre><code class="language-sh">$ r2 -H
+R2_VERSION=5.8.9
+R2_PREFIX=/usr/local
+R2_MAGICPATH=/usr/local/share/radare2/5.8.9/magic
+R2_INCDIR=/usr/local/include/libr
+R2_BINDIR=/usr/local/bin
+R2_LIBDIR=/usr/local/lib
+R2_LIBEXT=dylib
+R2_RCFILE=/Users/pancake/.radare2rc
+R2_RDATAHOME=/Users/pancake/.local/share/radare2
+R2_HISTORY=/Users/pancake/.cache/radare2/history
+R2_CONFIG_HOME=/Users/pancake/.config//radare2
+R2_CACHE_HOME=/Users/pancake/.cache/radare2
+R2_LIBR_PLUGINS=/usr/local/lib/radare2/5.8.9
+R2_USER_PLUGINS=/Users/pancake/.local/share/radare2/plugins
+R2_ZIGNS_HOME=/Users/pancake/.local/share//radare2/zigns
 </code></pre>
 <h2><a class="header" href="#rc-files" id="rc-files">RC Files</a></h2>
 <p>RC files are r2 scripts that are loaded at startup time. Those files must be in 3 different places:</p>
 <h3><a class="header" href="#system" id="system">System</a></h3>
-<p>radare2 will first try to load /usr/share/radare2/radare2rc</p>
+<p>radare2 will first try to load <code>/usr/share/radare2/radare2rc</code></p>
 <h3><a class="header" href="#your-home" id="your-home">Your Home</a></h3>
 <p>Each user in the system can have its own r2 scripts to run on startup to select the color scheme, and other custom options by having r2 commands in there.</p>
 <ul>
@@ -1064,9 +1068,9 @@ USER_ZIGNS=/home/user/.local/share/radare2/zigns
 <li>~/.config/radare2/radare2rc</li>
 <li>~/.config/radare2/radare2rc.d/</li>
 </ul>
+<p>The path to this file can be also specified with the <code>R2_RCFILE</code> environment variable.</p>
 <h3><a class="header" href="#target-file" id="target-file">Target file</a></h3>
-<p>If you want to run a script everytime you open a file, just create a file with the same name of the file
-but appending <code>.r2</code> to it.</p>
+<p>If you want to run a script everytime you open a file, just create a file with the same name of the file but appending <code>.r2</code> to it.</p>
 <h1><a class="header" href="#basic-commands" id="basic-commands">Basic Commands</a></h1>
 <p>Most command names in radare are derived from action names. They should be easy to remember, as they are short. Actually, all commands are single letters. Subcommands or related commands are specified using the second character of the command name. For example, <code>/ foo</code> is a command to search plain string, while <code>/x 90 90</code> is used to look for hexadecimal pairs.</p>
 <p>The general format for a valid command (as explained in the <a href="basic_commands/../first_steps/command_format.html">Command Format</a> chapter) looks like this:</p>
