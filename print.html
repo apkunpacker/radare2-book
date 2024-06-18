@@ -150,9 +150,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p>This book is an updated version (started by maijin) of the original radare1 book (written by pancake). Which is actively maintained and updated by many contributors over the Internet.</p>
-<p><em>UPDATE</em>: it is currently poorly maintained because lack of contributions. If you care about documentation and enjoy using radare2, feel free to submit a pullrequest to this github repository and make it better!</p>
-<p>Check the following links to read or contribute:</p>
+<p>This book is an updated version of the original radare1 book, which was initially written by pancake, but currently maintained by many contributors over the Internet.</p>
+<p><em>UPDATE</em>: If you are willing to contribute to the project in order to improve the status of the documentation, feel free to submit a pullrequest to this github repository and make it better!</p>
 <ul>
 <li><a href="https://github.com/radareorg/radare2-book">GitHub</a></li>
 <li><a href="https://github.com/radareorg/radare2-book/releases">PDF</a></li>
@@ -161,20 +160,19 @@
 <li><a href="gemini://radare.org/book">Read it on Gemini</a> - md2gmi</li>
 </ul>
 <h2><a class="header" href="#history" id="history">History</a></h2>
-<p>In 2006, Sergi Àlvarez (aka pancake) is the author of radare and radare2, the project started when he was working as a forensic analyst. Since he wasn't allowed to use the company software for his personal needs, he decided to write a small tool-a hexadecimal editor-with very basic characteristics:</p>
+<p>In 2006, Sergi Àlvarez (aka pancake) while working as a forensic analyst he decided to write a small tool to recover some deleted files from an HFS+ disk by accident. As long as using the privative software from work it was a good toy project, following the concept of a block-based hexadecimal editor interface with a very simple repl to enter commands to search for byte patterns and dump the results to disk. And have the folllowing characteristics:</p>
 <ul>
 <li>be extremely portable (unix friendly, command line, c, small)</li>
 <li>open disk devices, this is using 64bit offsets</li>
 <li>search for a string or hexpair</li>
 <li>review and dump the results to disk</li>
 </ul>
-<p>The editor was originally designed to recover a deleted file from an HFS+ partition.</p>
-<p>After that, pancake decided to extend the tool to have a pluggable io to be able to attach to processes and implemented the debugger functionalities, support for multiple architectures, and code analysis.</p>
+<p>After three years of intense development (in 2009) the project was too bloated to keep it as a monolitic tool and pancake decided to redesign the tool into a more pluggable and modular form. This way it was possible to create scripts, bindings and write plugins to add support for more architectures, debugging targets or improve the analysis capabilities by keeping the core intact.</p>
 <p>Since then, the project has evolved to provide a complete framework for analyzing binaries, while making use of basic UNIX concepts. Those concepts include the famous &quot;everything is a file&quot;, &quot;small programs that interact using stdin/stdout&quot;, and &quot;keep it simple&quot; paradigms.</p>
-<p>The need for scripting showed the fragility of the initial design: a monolithic tool made the API hard to use, and so a deep refactoring was needed. In 2009 radare2 (r2) was born as a fork of radare1. The refactor added flexibility and dynamic features. This enabled much better integration, paving the way to use r2 <a href="https://github.com/radareorg/radare2-bindings">from different programming languages</a>. Later on, the <a href="https://github.com/radareorg/radare2-r2pipe">r2pipe API</a> allowed access to radare2 via pipes from any language.</p>
-<p>What started as a one-man project, with some eventual contributions, gradually evolved into a big community-based project around 2014. The number of users was growing fast, and the author-and main developer-had to switch roles from coder to manager in order to integrate the work of the different developers that were joining the project.</p>
-<p>Instructing users to report their issues allows the project to define new directions to evolve in. Everything is managed in <a href="https://github.com/radareorg/radare2">radare2's GitHub</a> and discussed in the Telegram channel.</p>
-<p>The project remains active at the time of writing this book, and there are several side projects that provide, among other things, a graphical user interface (<a href="https://github.com/radareorg/iaito">Iaito</a>), a decompiler (<a href="https://github.com/wargio/r2dec-js">r2dec</a>, <a href="https://github.com/radareorg/radeco">radeco</a>), Frida integration (<a href="https://github.com/nowsecure/r2frida">r2frida</a>), Yara, Unicorn, Keystone, and many other projects indexed in the <a href="https://github.com/radareorg/radare2-pm">r2pm</a> (the radare2 package manager).</p>
+<p>The need for scripting showed the fragility of the initial design: a monolithic tool made the API hard to use, and so a deep refactoring was needed. In 2009 radare2 (r2) was born as a fork of radare1. The refactor added flexibility and dynamic features. This enabled much better integration, paving the way to use r2 <a href="https://github.com/radareorg/radare2-bindings">from different programming languages</a>. Later on, the <a href="https://github.com/radareorg/radare2-r2pipe">r2pipe API</a> allowed access to radare2 via pipes from any language, and the <a href="https://github.com/radareorg/radare2-r2papi">r2papi</a> provided an idiomatic and high level interface to use r2 through r2pipe from a large list of programming languages.</p>
+<p>What started as a one-man project, with some eventual contributions, gradually evolved into a big community-based project around 2014. The number of users was growing fast, changing roles and contribution rules to ease the maintainance as much as possible.</p>
+<p>It's important to instruct users to report their issues, as well as help developers willing to contribute to understand the codebase. The whole development is managed in <a href="https://github.com/radareorg/radare2">radare2's GitHub</a> and discussed in the Telegram and Discord channels.</p>
+<p>There are several side projects that provide, among other things, a graphical user interface (<a href="https://github.com/radareorg/iaito">Iaito</a>), a decompiler (<a href="https://github.com/wargio/r2dec-js">r2dec</a>, <a href="https://github.com/radareorg/r2ghidra">r2ghidra</a>), Frida integration (<a href="https://github.com/nowsecure/r2frida">r2frida</a>), Yara (<a href="https://github.com/radareorg/r2yara">r2yara</a>), Unicorn, Keystone, and many other projects indexed in the <a href="https://github.com/radareorg/radare2-pm">r2pm</a>, the radare2 package manager.</p>
 <p>Since 2016, the community gathers once a year in <a href="https://www.radare.org/con/">r2con</a>, a congress around radare2 that takes place in Barcelona.</p>
 <h2><a class="header" href="#the-framework" id="the-framework">The Framework</a></h2>
 <p>The Radare2 project is a set of small command-line utilities that can be used together or independently.</p>
